@@ -44,7 +44,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
   const SecondBox = styled(Box)(({ theme }) => ({
     display:"flex",
     paddingLeft:230,
-    border:"2px solid green",
+    // border:"2px solid green",
     justifyContent:"center",
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -55,8 +55,25 @@ const OuterContainer = styled(Box)(({ theme }) => ({
 
   const ThirdBox = styled(Box)(({ theme }) => ({
     display:"flex",
-    flexDirection:"column",
-    border:"2px solid blue",
+    height:520,
+    // border:"2px solid blue",
+    paddingLeft:150,
+    [theme.breakpoints.down("xl")]: {},
+    [theme.breakpoints.down("lg")]: {},
+    [theme.breakpoints.down("md")]: {},
+    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("xs")]: {},
+  }));
+
+  const TopBox = styled(Box)(({ theme }) => ({
+    display:"flex",
+  width:280,
+  flexDirection:"column",
+  textAlign:"left",
+  padding:15,
+  paddingLeft:20,
+  
+    border:"1px solid black",
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
     [theme.breakpoints.down("md")]: {},
@@ -79,6 +96,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
   const ImageBox = styled(Box)(({ theme }) => ({
    
     width:250,
+    height:400,
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
     [theme.breakpoints.down("md")]: {},
@@ -86,10 +104,9 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xs")]: {},
   }));
 
-  const DataMap = styled(Box)(({ theme }) => ({
+  const TextDetails = styled(Typography)(({ theme }) => ({
     color:"grey",
-    fontSize:10,
-    padding:8,
+    fontSize:8,
     
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
@@ -128,11 +145,25 @@ function Detail() {
 
 
             <SecondBox>
-                <ImageBox as={"img"} src={detailData.images[0]}/>
+                <ImageBox as={"img"} src={detailData?.images[0]}/>
             </SecondBox>
 
 
-            <ThirdBox></ThirdBox>
+            <ThirdBox>
+
+              <TopBox>
+                <TextDetails>FEW ITEMS LEFT</TextDetails>
+                <TextDetails sx={{fontSize:11,textTransform:"uppercase"}} >{detailData?.product}</TextDetails>
+                <TextDetails sx={{fontSize:10,paddingTop:2}} >₹{detailData.price}.00</TextDetails>
+                <TextDetails sx={{fontSize:8,paddingTop:2}}>MRP incl. of all taxes</TextDetails>
+                <TextDetails sx={{fontSize:11,paddingTop:2}}>{detailData?.name}</TextDetails>
+
+                <TextDetails sx={{fontSize:10,paddingTop:2}} >Round neck T-shirt made of a cotton blend with short sleeves.</TextDetails>
+
+
+              </TopBox>
+
+            </ThirdBox>
 
 
         </InnerContainer>
