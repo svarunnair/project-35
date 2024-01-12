@@ -60,7 +60,7 @@ export const getData=()=>(dispatch)=>{
     })
     .then((res)=>{
         dispatch(getDataSuccess(res.data))
-        console.log("resData",res.data)
+        console.log("resDataMain",res.data)
     })
     .catch((error)=>{
         dispatch(getDataFailure())

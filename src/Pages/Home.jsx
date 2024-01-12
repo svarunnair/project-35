@@ -270,6 +270,10 @@ function Home() {
     }
   }
 
+
+  const handleCart=()=>{
+    navigate('/cart')
+  }
   const handleSearch=()=>{
     navigate('/search')
   }
@@ -326,7 +330,7 @@ function Home() {
               <TextBox onClick={handleLogin}>LOGIN</TextBox>
               <TextBox onClick={handleHelp}>HELP</TextBox>
             </BoxOne>
-            <TextBox>SHOPING BAG()</TextBox>
+            <TextBox onClick={handleCart}>SHOPING BAG()</TextBox>
           </TopBox>
         </FirstBox>
         
