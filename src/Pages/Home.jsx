@@ -12,6 +12,7 @@ import CoverImages from "../Components/CoverImages";
 import { useLocation, useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 import PublicRoutes from "../Routes/PublicRoutes";
+import { useSelector } from "react-redux";
 
 
 const OuterContainer = styled(Box)(({ theme }) => ({
@@ -173,7 +174,7 @@ const BoxOne = styled(Typography)(({ theme }) => ({
 }));
 
 const SideBarBox = styled(Box)(({ theme }) => ({
-  // border:"1px solid red",
+  border:"1px solid black",
   width: 400,
   height: 450,
   position: "absolute",
@@ -221,7 +222,7 @@ const DivTwo = styled(Box)(({ theme }) => ({
 }));
 
 const MenuListDiv = styled(Box)(({ theme }) => ({
-  // border:"1px solid red",
+  // border:"2px solid red",
   display: "flex",
   justifyContent: "end",
   padding: 20,
@@ -260,6 +261,10 @@ function Home() {
   const navigate = useNavigate();
   const [show,setShow]=useState(false)
   const path=useLocation()
+  const cartData=useSelector((store)=>store.data.getCartData)
+
+
+  console.log("cartLength",cartData.length)
 
   const handleMenu=()=>{
     if(show===false){
@@ -280,15 +285,19 @@ function Home() {
 
   const handleMen = () => {
     navigate("/men");
+    setShow(false)
   };
   const handleWoman = () => {
-    navigate("/woman");
+    navigate("/women");
+    setShow(false)
   };
   const handleKids = () => {
     navigate("/kids");
+    setShow(false)
   };
   const handleBeauty = () => {
     navigate("/beauty");
+    setShow(false)
   };
 
   const handleLogin=()=>{
@@ -330,7 +339,7 @@ function Home() {
               <TextBox onClick={handleLogin}>LOGIN</TextBox>
               <TextBox onClick={handleHelp}>HELP</TextBox>
             </BoxOne>
-            <TextBox onClick={handleCart}>SHOPING BAG()</TextBox>
+            <TextBox onClick={handleCart}>SHOPING BAG({cartData.length})</TextBox>
           </TopBox>
         </FirstBox>
         
@@ -370,7 +379,7 @@ function Home() {
       {/* <PublicRoutes/> */}
 
       <BottomInput>
-        <OutlinedInput sx={{ height: 20, width: 330 }} placeholder="SEARCH" />
+        <OutlinedInput sx={{ height: 20, width: 330,color:"grey" }} placeholder="SEARCH" />
       </BottomInput>
     </OuterContainer>
   );

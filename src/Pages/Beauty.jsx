@@ -5,6 +5,7 @@ import { getData } from "../Redux/Data/action";
 import GridViewIcon from '@mui/icons-material/GridView';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
 import ViewArrayIcon from '@mui/icons-material/ViewArray';
+import { useNavigate } from "react-router-dom";
 
 const OuterContainer = styled(Box)(({ theme }) => ({
 //   border: "2px solid black",
@@ -109,8 +110,13 @@ const TextData = styled(Typography)(({ theme }) => ({
 function Beauty() {
   const mainData = useSelector((store) => store.data.getData);
   const dispatch = useDispatch();
+  const navigate=useNavigate()
 
   console.log("mainData", mainData);
+
+  const handleProduct=(id)=>{
+    navigate(`/detail/${id}`)
+  }
 
   useEffect(() => {
     dispatch(getData());
@@ -139,7 +145,7 @@ function Beauty() {
         <FirstBox>
           {mainData?.map((item) => (
             <DataMap>
-              <ImageBox as={"img"} src={item.images[2]}/>
+              <ImageBox onClick={()=>handleProduct(item.id)} as={"img"} src={item.images[2]}/>
               <TextData>{item.name}</TextData>
               <TextData>₹{item.price}.00</TextData>
             </DataMap>

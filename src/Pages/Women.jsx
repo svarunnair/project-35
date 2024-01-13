@@ -5,6 +5,7 @@ import { getData } from "../Redux/Data/action";
 import GridViewIcon from '@mui/icons-material/GridView';
 import ViewColumnIcon from '@mui/icons-material/ViewColumn';
 import ViewArrayIcon from '@mui/icons-material/ViewArray';
+import { useNavigate } from "react-router-dom";
 
 const OuterContainer = styled(Box)(({ theme }) => ({
 //   border: "2px solid black",
@@ -52,6 +53,7 @@ const DataMap = styled(Box)(({ theme }) => ({
 const ImageBox = styled(Box)(({ theme }) => ({
 //   border: "2px solid blue",
   width:"100%",
+  cursor:"pointer",
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
   [theme.breakpoints.down("md")]: {},
@@ -60,7 +62,8 @@ const ImageBox = styled(Box)(({ theme }) => ({
 }));
 
 const TextData = styled(Typography)(({ theme }) => ({
-  fontSize:12,
+  fontSize:10,
+  color:'grey',
     [theme.breakpoints.down("xl")]: {},
     [theme.breakpoints.down("lg")]: {},
     [theme.breakpoints.down("md")]: {},
@@ -105,11 +108,16 @@ const TextData = styled(Typography)(({ theme }) => ({
       [theme.breakpoints.down("xs")]: {},
     }));
 
-function Woman() {
+function Women() {
   const mainData = useSelector((store) => store.data.getData);
   const dispatch = useDispatch();
+  const navigate=useNavigate()
 
   console.log("mainData", mainData);
+
+  const handleProduct=(id)=>{
+    navigate(`/detail/${id}`)
+  }
 
   useEffect(() => {
     dispatch(getData());
@@ -138,7 +146,7 @@ function Woman() {
         <FirstBox>
           {mainData?.map((item) => (
             <DataMap>
-              <ImageBox as={"img"} src={item.images[0]}/>
+              <ImageBox onClick={()=>handleProduct(item.id)} as={"img"} src={item.images[0]}/>
               <TextData>{item.name}</TextData>
               <TextData>₹{item.price}.00</TextData>
             </DataMap>
@@ -149,4 +157,4 @@ function Woman() {
   );
 }
 
-export default Woman;
+export default Women;

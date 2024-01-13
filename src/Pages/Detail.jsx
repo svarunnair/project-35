@@ -2,7 +2,7 @@ import { Box, Button, Typography, styled } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getData, getDetail } from '../Redux/Data/action';
+import { getData, getDetail, postCart } from '../Redux/Data/action';
 
 const OuterContainer = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xl")]: {},
@@ -346,6 +346,14 @@ function Detail() {
     }
     
     }
+
+    const handleAdd=()=>{
+      detailData.quant=1
+      dispatch(postCart(detailData))
+    }
+    const handleProduct=(id)=>{
+      navigate(`/detail/${id}`)
+    }
     
 
     useEffect(()=>{
@@ -428,7 +436,7 @@ function Detail() {
             </SizeDiv>
             <TextDetails sx={{paddingTop:2,paddingBottom:1}}>This product has a smaller fit than usual.</TextDetails>
             <TextDetails sx={{paddingTop:0,paddingBottom:2}}>FIND YOUR SIZE  |  MEASUREMENT GUIDE</TextDetails>
-            <Button sx={{border:"1px solid black",borderRadius:0,color:"grey",fontSize:10,}}>ADD</Button>
+            <Button onClick={handleAdd} sx={{border:"1px solid black",borderRadius:0,color:"grey",fontSize:10,}}>ADD</Button>
               </TopBox>
             
             </ThirdBox>
@@ -490,7 +498,7 @@ function Detail() {
 </SizeDiv>
 <TextDetails sx={{paddingTop:2,paddingBottom:1}}>This product has a smaller fit than usual.</TextDetails>
 <TextDetails sx={{paddingTop:0,paddingBottom:2}}>FIND YOUR SIZE  |  MEASUREMENT GUIDE</TextDetails>
-<Button sx={{border:"1px solid black",borderRadius:0,color:"grey",fontSize:10,}}>ADD</Button>
+<Button onClick={handleAdd} sx={{border:"1px solid black",borderRadius:0,color:"grey",fontSize:10,}}>ADD</Button>
  </TopBox>
  
 
@@ -502,9 +510,9 @@ function Detail() {
 
           <MapDiv>
 
-            {mainData.map((item)=>(
+            {mainData?.map((item)=>(
               <InnerDiv>
-              <ImageBoxOne as={"img"} src={item.images[2]}/>
+              <ImageBoxOne onClick={()=>handleProduct(item.id)} sx={{cursor:"pointer"}} as={"img"} src={item.images[2]}/>
               <TextMap sx={{fontSize:10}}>{item.name}</TextMap>
               <TextMap sx={{fontSize:10}}>₹{item.price}.00</TextMap>
               </InnerDiv>
