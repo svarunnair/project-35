@@ -10,6 +10,11 @@ export const POST_SIGNUP_REQUIEST="POST_SIGNUP_REQUIEST"
 export const POST_SIGNUP_SUCCESS="POST_SIGNUP_SUCCESS"
 export const POST_SIGNUP_FAILURE="POST_SIGNUP_FAILURE"
 
+export const GET_SIGNUP_REQUIEST="GET_SIGNUP_REQUIEST"
+export const GET_SIGNUP_SUCCESS="GET_SIGNUP_SUCCESS"
+export const GET_SIGNUP_FAILURE="GET_SIGNUP_FAILURE"
+
+
 
 const postAuthRequiest=()=>{
     return({
@@ -44,6 +49,25 @@ const postSignupFailure=()=>{
         type:POST_SIGNUP_FAILURE
     })
 }
+
+const getSignupRequiest=()=>{
+    return({
+        type:GET_SIGNUP_REQUIEST
+    })
+}
+const getSignupSuccess=(data)=>{
+    return({
+        type:GET_SIGNUP_SUCCESS,
+        payload:data
+    })
+}
+const getSignupFailure=()=>{
+    return({
+        type:GET_SIGNUP_FAILURE
+    })
+}
+
+
 
 
 
@@ -85,3 +109,19 @@ export const postSignup=(data)=>(dispatch)=>{
         dispatch(postSignupFailure())
     })
 }
+
+export const getSignup=()=>(dispatch)=>{
+    dispatch(getSignupRequiest())
+    return axios({
+        url:"http://localhost:8000/signup",
+        method:"GET",
+      
+    })
+    .then((res)=>{
+        dispatch(getSignupSuccess(res.data))
+        console.log("getSignup",res.data)
+    })
+    .catch((error)=>{
+        dispatch(getSignupFailure())
+    })
+}    

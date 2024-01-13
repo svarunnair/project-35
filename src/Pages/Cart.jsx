@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteCart, getCart, getData, patchCart } from '../Redux/Data/action';
+import { deleteCart, getCart, getData, patchCart, postPayment } from '../Redux/Data/action';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { TextRotateUp } from '@mui/icons-material';
 
@@ -47,13 +47,18 @@ const OuterContainer = styled(Box)(({ theme }) => ({
    }));
 
    const CartItems = styled(Box)(({ theme }) => ({
-    display:"flex",
+    display:"grid",
+    gridTemplateColumns:"repeat(6,1fr)",
     paddingBottom:100,
-     border:"1px solid black",
+    width:"100%",
+     border:"1px solid red",
    
       [theme.breakpoints.down("xl")]: {},
       [theme.breakpoints.down("lg")]: {},
-      [theme.breakpoints.down("md")]: {},
+      [theme.breakpoints.down("md")]: {
+        width:620,
+        gridTemplateColumns:"repeat(3,1fr)",
+      },
       [theme.breakpoints.down("sm")]: {},
       [theme.breakpoints.down("xs")]: {},
     }));
@@ -271,6 +276,11 @@ function Cart() {
         }    
     }
 
+    const handleContinue=()=>{
+      dispatch(postPayment(...cartData))
+      navigate("/payment")
+    }
+
 
     const handleProduct=(id)=>{
       navigate(`/detail/${id}`)
@@ -327,7 +337,7 @@ useEffect(()=>{
     <Total>INCLUDING GST</Total>
     <Total>* EXCL SHIPPING COST</Total>
   </TextAmount>
-  <TotalAmountBox>Continue</TotalAmountBox>
+  <TotalAmountBox onClick={handleContinue}>Continue</TotalAmountBox>
 </AmountBox>
 
 <TextBox sx={{textAlign:"left",padding:2,}}>YOU MAY ALSO LIKE</TextBox>

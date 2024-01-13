@@ -26,6 +26,21 @@ export const DELETE_CART_REQUIEST="DELETE_CART_REQUIEST"
 export const DELETE_CART_SUCCESS="DELETE_CART_SUCCESS"
 export const DELETE_CART_FAILURE="DELETE_CART_FAILURE"
 
+export const POST_ADDRESS_REQUIEST="POST_ADDRESS_REQUIEST"
+export const POST_ADDRESS_SUCCESS="POST_ADDRESS_SUCCESS"
+export const POST_ADDRESS_FAILURE="POST_ADDRESS_FAILURE"
+
+export const GET_ADDRESS_REQUIEST="GET_ADDRESS_REQUIEST"
+export const GET_ADDRESS_SUCCESS="GET_ADDRESS_SUCCESS"
+export const GET_ADDRESS_FAILURE="GET_ADDRESS_FAILURE"
+
+export const POST_PAYMENT_REQUIEST="POST_PAYMENT_REQUIEST"
+export const POST_PAYMENT_SUCCESS="POST_PAYMENT_SUCCESS"
+export const POST_PAYMENT_FAILURE="POST_PAYMENT_FAILURE"
+
+export const GET_PAYMENT_REQUIEST="GET_PAYMENT_REQUIEST"
+export const GET_PAYMENT_SUCCESS="GET_PAYMENT_SUCCESS"
+export const GET_PAYMENT_FAILURE="GET_PAYMENT_FAILURE"
 
 
 
@@ -134,6 +149,74 @@ const deleteCartFailure=()=>{
         type:DELETE_CART_FAILURE
     })
 }
+const postAddressRequiest=()=>{
+    return({
+        type:POST_ADDRESS_REQUIEST
+    })
+}
+const postAddressSuccess=(data)=>{
+    return({
+        type:POST_ADDRESS_SUCCESS,
+        payload:data
+    })
+}
+const postAddressFailure=()=>{
+    return({
+        type:POST_ADDRESS_FAILURE
+    })
+}
+
+const getAddressRequiest=()=>{
+    return({
+        type:GET_ADDRESS_REQUIEST
+    })
+}
+const getAddressSuccess=(data)=>{
+    return({
+        type:GET_ADDRESS_SUCCESS,
+        payload:data
+    })
+}
+const getAddressFailure=()=>{
+    return({
+        type:GET_ADDRESS_FAILURE
+    })
+}
+const postPaymentRequiest=()=>{
+    return({
+        type:POST_PAYMENT_REQUIEST
+    })
+}
+const postPaymentSuccess=(data)=>{
+    return({
+        type:POST_PAYMENT_SUCCESS,
+        payload:data
+    })
+}
+const postPaymentFailure=()=>{
+    return({
+        type:POST_PAYMENT_FAILURE
+    })
+}
+
+const getPaymentRequiest=()=>{
+    return({
+        type:GET_PAYMENT_REQUIEST
+    })
+}
+const getPaymentSuccess=(data)=>{
+    return({
+        type:GET_PAYMENT_SUCCESS,
+        payload:data
+    })
+}
+const getPaymentFailure=()=>{
+    return({
+        type:GET_PAYMENT_FAILURE
+    })
+}
+
+
 
 
 
@@ -233,3 +316,65 @@ export const deleteCart=(id)=>(dispatch)=>{
     })
 }
 
+export const postAddress=(data)=>(dispatch)=>{
+    dispatch(postAddressRequiest())
+    return axios({
+        url:"http://localhost:8000/address",
+        method:"POST",
+        data
+    })
+    .then((res)=>{
+        dispatch(postAddressSuccess(res.data))
+        console.log("res.addres",res.data)
+    })
+    .catch((error)=>{
+        dispatch(postAddressFailure())
+    })
+}
+
+export const getAddress=()=>(dispatch)=>{
+    dispatch(getAddressRequiest())
+    return axios({
+        url:"http://localhost:8000/address",
+        method:"GET",
+    })
+    .then((res)=>{
+        dispatch(getAddressSuccess(res.data))
+        console.log("res.addGet",res.data)
+    })
+    .catch((error)=>{
+        dispatch(getAddressFailure())
+    })
+}
+
+export const postPayment=(data)=>(dispatch)=>{
+    dispatch(postPaymentRequiest())
+    return axios({
+        url:"http://localhost:8000/payment",
+        method:"POST",
+        data
+    })
+    .then((res)=>{
+        dispatch(postPaymentSuccess(res.data))
+        console.log("postPyyyy",res.data)
+    })
+    .catch((error)=>{
+        dispatch(postPaymentFailure())
+    })
+}
+
+
+export const getPayment=()=>(dispatch)=>{
+    dispatch(getPaymentRequiest())
+    return axios({
+        url:"http://localhost:8000/payment",
+        method:"GET",
+    })
+    .then((res)=>{
+        dispatch(getPaymentSuccess(res.data))
+        console.log("res.pymnt",res.data)
+    })
+    .catch((error)=>{
+        dispatch(getPaymentFailure())
+    })
+}

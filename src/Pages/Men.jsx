@@ -1,4 +1,4 @@
-import { Box, Button, Typography, styled } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, Typography, styled } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../Redux/Data/action";
@@ -122,6 +122,8 @@ function Men() {
     dispatch(getData());
   }, []);
 
+
+ 
   
   return (
     <OuterContainer>
@@ -134,6 +136,7 @@ function Men() {
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}>VIEW ALL</Button>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}> COLOUR</Button>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}>PRICE</Button>
+
       </FilterBox>
 {/* <GridBox>
     <ViewArrayIcon/>
