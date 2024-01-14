@@ -98,7 +98,7 @@ const TextData = styled(Typography)(({ theme }) => ({
    gap:10,
    paddingBottom:10,
    paddingLeft:20,
-   position:"sticky",
+  //  position:"sticky",
    top:150,
 
       [theme.breakpoints.down("xl")]: {},
@@ -130,17 +130,19 @@ function Women() {
       <InnerContainer>
 
 <GridContainer>
-      <FilterBox>
+      {/* <FilterBox>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}>VIEW ALL</Button>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}> COLOUR</Button>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}>PRICE</Button>
-      </FilterBox>
+      </FilterBox> */}
 {/* <GridBox>
     <ViewArrayIcon/>
     <ViewColumnIcon/>
     <GridViewIcon/>
 
 </GridBox> */}
+
+
 
       </GridContainer>
         <FirstBox>
@@ -151,6 +153,7 @@ function Women() {
               <TextData>₹{item.price}.00</TextData>
             </DataMap>
           ))}
+        
         </FirstBox>
       </InnerContainer>
     </OuterContainer>

@@ -128,20 +128,15 @@ function Beauty() {
     
       <InnerContainer>
 
-<GridContainer>
+{/* <GridContainer>
       <FilterBox>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}>VIEW ALL</Button>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}> COLOUR</Button>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}>PRICE</Button>
       </FilterBox>
-{/* <GridBox>
-    <ViewArrayIcon/>
-    <ViewColumnIcon/>
-    <GridViewIcon/>
 
-</GridBox> */}
 
-      </GridContainer>
+      </GridContainer> */}
         <FirstBox>
           {mainData?.map((item) => (
             <DataMap>

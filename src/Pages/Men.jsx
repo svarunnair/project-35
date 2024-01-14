@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, InputLabel, Typography, styled } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../Redux/Data/action";
 import GridViewIcon from '@mui/icons-material/GridView';
@@ -111,6 +111,11 @@ function Men() {
   const mainData = useSelector((store) => store.data.getData);
   const dispatch = useDispatch();
   const navigate=useNavigate()
+  const [hide, setHide] = useState(localStorage.getItem('hide') || '');
+
+
+
+
 
   console.log("mainData", mainData);
 
@@ -123,6 +128,10 @@ function Men() {
   }, []);
 
 
+
+  console.log("console.log(",hide)
+
+
  
   
   return (
@@ -131,21 +140,16 @@ function Men() {
     
       <InnerContainer>
 
-<GridContainer>
-      <FilterBox>
+{/* <GridContainer>
+      {hide && <FilterBox>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}>VIEW ALL</Button>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}> COLOUR</Button>
 <Button sx={{border:"1px solid black",borderRadius:0,height:37,color:"black"}}>PRICE</Button>
 
-      </FilterBox>
-{/* <GridBox>
-    <ViewArrayIcon/>
-    <ViewColumnIcon/>
-    <GridViewIcon/>
+      </FilterBox>}
 
-</GridBox> */}
 
-      </GridContainer>
+      </GridContainer> */}
         <FirstBox>
           {mainData?.map((item) => (
             <DataMap>
