@@ -1,5 +1,5 @@
 import { PhoneIphoneOutlined } from '@mui/icons-material';
-import { Box, Button, Input, Typography, styled } from '@mui/material';
+import { Box, Button, Input, OutlinedInput, Typography, styled } from '@mui/material';
 import { PhoneAuthCredential, PhoneAuthProvider, RecaptchaVerifier, signInWithCredential, signInWithPhoneNumber } from 'firebase/auth';
 import React, { useState } from 'react'
 import PhoneInput from 'react-phone-input-2';
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const OuterDiv = styled(Box)(({ theme }) => ({
-    border:"1px solid red",
+    // border:"1px solid red",
       
       [theme.breakpoints.down("xl")]: {},
       [theme.breakpoints.down("lg")]: {},
@@ -17,9 +17,13 @@ const OuterDiv = styled(Box)(({ theme }) => ({
       [theme.breakpoints.down("xs")]: {},
     }));
     const InnerDiv = styled(Box)(({ theme }) => ({
-        border:"1px solid green",
+        // border:"3px solid green",
         paddingTop:200,
         paddingBottom:200,
+        display:"grid",
+   
+        justifyItems:"center",
+        gap:10,
           
           [theme.breakpoints.down("xl")]: {},
           [theme.breakpoints.down("lg")]: {},
@@ -30,7 +34,7 @@ const OuterDiv = styled(Box)(({ theme }) => ({
 
         const TextBox = styled(Typography)(({ theme }) => ({
             // border:"1px solid green",
-              
+              fontSize:25,
               [theme.breakpoints.down("xl")]: {},
               [theme.breakpoints.down("lg")]: {},
               [theme.breakpoints.down("md")]: {},
@@ -91,10 +95,10 @@ function MobileOtp() {
             <TextBox>Enter your valid  Mobile number</TextBox>
 <PhoneInput country={"ind"} value={phone} onChange={(phone)=>setPhone('+'+phone)}/>
 
-<Button onClick={handleSend}>Sent OTP</Button>
+<Button sx={{width:"10%",border:"1px solid black",borderRadius:0,background:"black",color:"white",":hover":{background:"white",color:"black"}}} onClick={handleSend}>Sent OTP</Button>
 <div id='recaptcha'></div>
-<Input onChange={handleInput} placeholder='input OTP' />
-<Button onClick={handleVerify}>Verify</Button>
+<OutlinedInput onChange={handleInput} placeholder='input OTP' /><br/>
+<Button sx={{width:"10%",border:"1px solid black",borderRadius:0,background:"black",color:"white",":hover":{background:"white",color:"black"}}} onClick={handleVerify}>Verify</Button>
   
         </InnerDiv>
 
