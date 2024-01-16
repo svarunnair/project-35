@@ -230,6 +230,7 @@ const MenuListDiv = styled(Box)(({ theme }) => ({
   justifyContent: "end",
   padding: 20,
   gap: 10,
+  cursor:"pointer",
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
   [theme.breakpoints.down("md")]: {},
