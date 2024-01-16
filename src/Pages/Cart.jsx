@@ -51,7 +51,7 @@ const OuterContainer = styled(Box)(({ theme }) => ({
     gridTemplateColumns:"repeat(6,1fr)",
     paddingBottom:100,
     width:"100%",
-     border:"1px solid red",
+    //  border:"1px solid red",
    
       [theme.breakpoints.down("xl")]: {},
       [theme.breakpoints.down("lg")]: {},
@@ -251,6 +251,7 @@ function Cart() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const cartData=useSelector((store)=>store.data.getCartData)
+    let token=localStorage.getItem("token")
 
 
     const handleAdd=(id,quant)=>{
@@ -277,8 +278,15 @@ function Cart() {
     }
 
     const handleContinue=()=>{
-      dispatch(postPayment(...cartData))
-      navigate("/payment")
+      if(!token){
+        alert('Kindly login')
+        navigate('/signin')
+      }
+       if(token){
+        dispatch(postPayment(...cartData))
+        navigate("/payment")
+       }
+      
     }
 
 
@@ -347,7 +355,7 @@ useEffect(()=>{
 {mainData?.map((item)=>(
     <DataMap>
 
-        <ImageBox onClick={()=>handleProduct(item.id)} sx={{width:207,}} as={"img"} src={item.images[0]} />
+        <ImageBox onClick={()=>handleProduct(item.id)} sx={{width:207,cursor:"pointer"}} as={"img"} src={item.images[0]} />
         <TextBox>{item.name}</TextBox>
         <TextBox>{item.price}</TextBox>
 

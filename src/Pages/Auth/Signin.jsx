@@ -92,6 +92,7 @@ function Signin() {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
   const navigate=useNavigate()
+  const token=localStorage.getItem('token')
 
   const handleEmail=(e)=>{
    let value=e.target.value 
@@ -112,6 +113,9 @@ function Signin() {
       password:password
     }
   dispatch(postAuth(data))
+    alert('Login successfull')
+    navigate(-1)
+
   }
 
   return (

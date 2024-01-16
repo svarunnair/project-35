@@ -105,6 +105,11 @@ function Search() {
 
   console.log("mainData", mainData);
 
+
+  const handleProduct=(id)=>{
+    navigate(`/detail/${id}`)
+  }
+
   const handleSearch=(e)=>{
 
     let value=e.target.value 
@@ -136,7 +141,7 @@ function Search() {
         <FirstBox>
           {data?.map((item) => (
             <MapData>
-              <ImageBox as={"img"} src={item.images[2]} />
+              <ImageBox sx={{cursor:"pointer"}} onClick={()=>handleProduct(item.id)} as={"img"} src={item.images[2]} />
               <TextData>{item.name}</TextData>
               <TextData>₹{item.price}.00</TextData>
             </MapData>

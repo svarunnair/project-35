@@ -350,6 +350,7 @@ function Detail() {
     const handleAdd=()=>{
       detailData.quant=1
       dispatch(postCart(detailData))
+      alert("Product added to cart successfully")
     }
     const handleProduct=(id)=>{
       navigate(`/detail/${id}`)

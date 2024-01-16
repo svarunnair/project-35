@@ -1,4 +1,4 @@
-import { Box, Typography, styled } from "@mui/material";
+import { Box, Button, Typography, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CottageOutlinedIcon from "@mui/icons-material/CottageOutlined";
 import ApartmentOutlinedIcon from "@mui/icons-material/ApartmentOutlined";
@@ -238,6 +238,22 @@ const MapData = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("xs")]: {},
   }));
 
+  const BottomBox = styled(Box)(({ theme }) => ({
+    // border: "2px solid blue",
+    
+    paddingTop:50,
+    
+   
+    [theme.breakpoints.down("xl")]: {},
+    [theme.breakpoints.down("lg")]: {},
+    [theme.breakpoints.down("md")]: {
+ 
+    },
+    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("xs")]: {},
+  }));
+
+
 function Payment() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -263,7 +279,21 @@ function Payment() {
 
   console.log("datee",dateAfter10Days)
 
+const handleShopping=()=>{
+  
+  localStorage.removeItem('OTP token')
+  navigate('/women')
+}
 
+
+const otpToken=localStorage.getItem('OTP token')
+
+
+useEffect(()=>{
+  if(otpToken){
+    alert("Payment successfully completed")
+  }
+},[])
 
 
   console.log("adressss", address);
@@ -272,7 +302,9 @@ function Payment() {
   const handleEdit = () => {
     navigate("/address");
   };
-
+const handleOtp=()=>{
+  navigate('/mobile')
+}
   useEffect(() => {
     dispatch(getPayment());
   }, []);
@@ -344,6 +376,11 @@ function Payment() {
          
         </CartData>
       </InnerContainer>
+      <Button onClick={handleOtp} sx={{border:'1px solid black',borderRadius:0,background:"black",color:'white',":hover":{background:"black",color:'white'}}} >Complete Payment by OTP</Button><br/>
+     <BottomBox>
+     <Button  onClick={handleShopping} sx={{border:'1px solid black',borderRadius:0,background:"black",color:'white',":hover":{background:"black",color:'white'}}} >Continue Shopping</Button>
+     </BottomBox>
+      
     </OuterContainer>
   );
 }

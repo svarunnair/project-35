@@ -186,7 +186,10 @@ const SideBarBox = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
-  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("md")]: {
+    width: 350,
+  height: 350,
+  },
   [theme.breakpoints.down("sm")]: {},
   [theme.breakpoints.down("xs")]: {},
 }));
@@ -248,7 +251,20 @@ const ButtonBox = styled(Typography)(({ theme }) => ({
 const ProductList = styled(Box)(({ theme }) => ({
   // border:"1px solid red",
   display: "flex",
+  flexDirection:'column',
   justifyContent: "end",
+  gap:10,
+  [theme.breakpoints.down("xl")]: {},
+  [theme.breakpoints.down("lg")]: {},
+  [theme.breakpoints.down("md")]: {},
+  [theme.breakpoints.down("sm")]: {},
+  [theme.breakpoints.down("xs")]: {},
+}));
+const ButtonDiv = styled(Box)(({ theme }) => ({
+  // border:"1px solid red",
+  display: "flex",
+  justifyContent: "end",
+  gap:10,
 
   [theme.breakpoints.down("xl")]: {},
   [theme.breakpoints.down("lg")]: {},
@@ -372,7 +388,21 @@ function Home() {
           </MenuListDiv>
 
           <ProductList>
-            <Button>Collections</Button>
+            <Button onClick={handleBeauty} sx={{justifyContent:'right',borderRadius:0,fontSize:10,color:"black"}}>Collections</Button>
+            <ButtonDiv>
+            <Button onClick={handleBeauty} sx={{border:"1px solid black",borderRadius:0,fontSize:10,color:"black"}}>Gifts</Button>
+            <Button onClick={handleBeauty} sx={{border:"1px solid black",borderRadius:0,fontSize:10,color:"black"}}>Jackets</Button>
+            </ButtonDiv>
+            <ButtonDiv>
+            <Button onClick={handleBeauty} sx={{border:"1px solid black",borderRadius:0,fontSize:10,color:"black"}}>Perfumes</Button>
+            <Button onClick={handleBeauty} sx={{border:"1px solid black",borderRadius:0,fontSize:10,color:"black"}}>Jeans</Button>
+            <Button onClick={handleBeauty} sx={{border:"1px solid black",borderRadius:0,fontSize:10,color:"black"}}>Tshirts</Button>
+            </ButtonDiv>
+            <ButtonDiv>
+            <Button onClick={handleBeauty} sx={{border:"1px solid black",borderRadius:0,fontSize:10,color:"black"}}>Leather</Button>
+            <Button onClick={handleBeauty} sx={{border:"1px solid black",borderRadius:0,fontSize:10,color:"black"}}>Polo shirts</Button>
+            <Button onClick={handleBeauty} sx={{border:"1px solid black",borderRadius:0,fontSize:10,color:"black"}}>Suits</Button>
+            </ButtonDiv>
           </ProductList>
         </DivTwo>
       </SideBarBox>}
@@ -382,7 +412,7 @@ function Home() {
       {/* <PublicRoutes/> */}
 
       <BottomInput>
-        <OutlinedInput sx={{ height: 20, width: 330,color:"grey" }} placeholder="SEARCH" />
+        <OutlinedInput onClick={handleSearch} sx={{ height: 20, width: 330,color:"grey" }} placeholder="SEARCH" />
       </BottomInput>
     </OuterContainer>
   );

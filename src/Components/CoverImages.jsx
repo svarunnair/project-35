@@ -107,7 +107,7 @@ function CoverImages() {
 <ImgBox as={"img"} onWheel={handleScroll} src={allImages[image]} />
 {/* <ImgBoxSecond as={"img"} onWheel={handleScrollSecond} src={SecondImage[imageSecond]} /> */}
 
-<ImgBoxSecond as={"img"} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3NKrfwx0vhP3ALSONFbpvshVBhG8GhhqJFg&usqp=CAU"/>
+<ImgBoxSecond sx={{height:'100%'}} as={"img"} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyW8zzPDY_50k322GAcZN_w9P79ZUHY2er9A&usqp=CAU"/>
     </OuterContainer>
   )
 }

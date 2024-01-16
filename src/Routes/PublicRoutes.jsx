@@ -15,8 +15,11 @@ import Signup from '../Pages/Auth/Signup'
 import Women from '../Pages/Women'
 import Payment from '../Pages/Payment'
 import Address from '../Pages/Address'
+import MobileOtp from '../Pages/Auth/MobileOtp'
 
 function PublicRoutes() {
+
+  const token=localStorage.getItem('token')
   return (
    
         <Routes>
@@ -32,8 +35,9 @@ function PublicRoutes() {
             <Route path='/help' element={<Help/>}/>
             <Route path='/detail/:id' element={<Detail/>}/>
             <Route path='/cart' element={<Cart/>}/>
-            <Route path='/payment' element={<Payment/>}/>
+            <Route path='/payment' element={token&&<Payment/>}/>
             <Route path='/address' element={<Address/>}/>
+            <Route path='/mobile' element={<MobileOtp/>}/>
 
 
 
