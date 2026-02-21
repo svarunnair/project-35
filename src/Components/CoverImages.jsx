@@ -1,6 +1,7 @@
 import { Box, styled } from '@mui/material';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import imgs from '../assets/img/123.png'
 
 
 const OuterContainer = styled(Box)(({ theme }) => ({
@@ -104,10 +105,10 @@ function CoverImages() {
   return (
     <OuterContainer>
 
-<ImgBox as={"img"} onWheel={handleScroll} src={allImages[image]} />
+<ImgBox as={"img"} onWheel={handleScroll} src={imgs} />
 {/* <ImgBoxSecond as={"img"} onWheel={handleScrollSecond} src={SecondImage[imageSecond]} /> */}
 
-<ImgBoxSecond sx={{height:'100%'}} as={"img"} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyW8zzPDY_50k322GAcZN_w9P79ZUHY2er9A&usqp=CAU"/>
+<ImgBoxSecond sx={{height:'100%'}} as={"img"} src={imgs}/>
     </OuterContainer>
   )
 }
